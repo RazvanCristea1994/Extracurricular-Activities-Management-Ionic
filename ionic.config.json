@@ -1,0 +1,7 @@
+{
+  "name": "Extacurricular-Activities-Management-UI",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
