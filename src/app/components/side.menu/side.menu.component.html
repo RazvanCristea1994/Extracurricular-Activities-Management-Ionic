@@ -1,0 +1,27 @@
+<ion-menu slot="start" menuId="main" contentId="content1">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <ion-list>
+            <ion-menu-toggle auto-hide="true">
+                <ion-item [routerLink]="'/activities'">Activities</ion-item>
+            </ion-menu-toggle>
+
+            <ion-menu-toggle auto-hide="true">
+                <ion-item [routerLink]="'/bookings'">Bookings</ion-item>
+            </ion-menu-toggle>
+
+            <ion-menu-toggle auto-hide="true">
+                <ion-item *ngIf="!(isAuthenticated | async)" [routerLink]="'/login'">Log in</ion-item>
+            </ion-menu-toggle>
+
+            <ion-menu-toggle auto-hide="true">
+                <ion-item *ngIf="isAuthenticated | async" [routerLink]="'/login'">Log in</ion-item>
+            </ion-menu-toggle>
+        </ion-list>
+    </ion-content>
+</ion-menu>

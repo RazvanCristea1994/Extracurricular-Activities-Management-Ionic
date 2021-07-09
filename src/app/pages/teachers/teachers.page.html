@@ -1,0 +1,27 @@
+<app-navbar [pageName]="'Teachers'"></app-navbar>
+
+<ion-content>
+    <ion-toolbar>
+        <button *ngIf="filter && filter.id" ion-button (click)="removeFilter()">
+            <ion-icon name="close"></ion-icon>
+            {{ filter.name }}
+        </button>
+    </ion-toolbar>
+
+    <ion-list *ngIf="teachers">
+        <div *ngFor="let teacher of teachers.entities; let i = index">
+            <ion-item>
+                <ion-label>{{ i }} - {{ teacher.firstName }} {{ teacher.lastName }} {{ teacher.activities }}</ion-label>
+                <ion-icon name="chevron-forward-outline" (click)="viewStory(story)"></ion-icon>
+                <ion-icon *ngIf="isAuthenticated | async" name="pencil" (click)="editStory(story)"></ion-icon>
+                <ion-icon *ngIf="isAuthenticated | async" color="danger" name="trash-outline" (click)="deleteStory(story)"></ion-icon>
+            </ion-item>
+
+            <ion-toolbar>
+                <button *ngFor="let activity of teachers.activities" (click)="loadTeachersForAnActivity">
+                    {{ activity.name }}
+                </button>
+            </ion-toolbar>
+        </div>
+    </ion-list>
+</ion-content>
